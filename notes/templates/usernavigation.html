@@ -1,0 +1,62 @@
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load static %}
+    <title>Notes Sharing Site </title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" rel="stylesheet">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link href="{% static 'css/mystyle.css'%}" rel="stylesheet">
+<body>
+
+<h2 style="padding : 2%"><span style="color:008080; font-family:playfair display; font-weight: bold">Study Kaksh</span>
+    <span class="mt-4" style="position: absolute; right: 40px; font-weight: bold; font-family: 'poppins'; color: #black;">
+      <span> Welcome {{request.user.first_name}}  ! </span>
+  </span>
+</h2>
+<nav class="navbar navbar-expand-sm justify-content-center" style="background-color: #008080; font-size: 20px;">
+    <ul class="navbar-nav">
+
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'profile'%}" style="color: #FFFFFF;"> PROFILE </a>
+        </li>
+
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'upload_notes'%}" style="color: #FFFFFF;">UPLOAD NOTES
+
+            </a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'view_mynotes'%}" style="color: #FFFFFF;">VIEW MY NOTES
+
+            </a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'viewallnotes'%}" style="color: #FFFFFF;">VIEW ALL NOTES
+            </a>
+        </li>
+
+
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'changepassword'%}" style="color: #FFFFFF;"> CHANGE PASSWORD </a>
+        </li>
+
+        <span style="position: absolute; right: 40px;">
+<li class="navbar-item">
+    <a class="nav-link" style="color: #FFFFFF;" href="{% url 'logout'%}">LOGOUT</a>
+  </li>
+  </span>
+
+    </ul>
+</nav>
+</body>
+</html>
+
+
+{% block body %}
+{% endblock %}

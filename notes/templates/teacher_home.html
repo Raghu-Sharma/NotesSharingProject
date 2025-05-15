@@ -1,0 +1,96 @@
+{% extends 'teacher_nav.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    .container1{
+      background-color :008080 ;
+      border-radius : 8px;
+      }
+
+   h2,h4{padding : 10px }
+
+  .mydiv:hover{
+  transform : translateY(-10px)
+   }
+
+      body {
+          background-color: white;
+          color: black;
+      }
+
+
+</style>
+<br><br>
+<div class="container mt-5">
+    <div class="row">
+
+
+        <div class="col-sm-3 text-center mydiv ">
+            <div class="container1">
+                <h2 style="color:#AFC8AD;">{{ pn }}</h2>
+                <a href="{% url 'pending_notes' %}"><h4 style="color:#AFC8AD;">Pending Notes</h4></a>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 style="color:#AFC8AD;">{{ an }}</h2>
+                <a href="{% url 'accepted_notes' %}"><h4 style="color:#AFC8AD;">Accepted Notes</h4></a>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1">
+                <h2 style="color:#AFC8AD;">{{ rn }}</h2>
+                <a href="{% url 'rejected_notes' %}"><h4 style="color:#AFC8AD;">Rejected Notes</h4></a>
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 text-center mydiv">
+            <div class="container1 ">
+                <h2 style="color:#AFC8AD;">{{ alln }}</h2>
+                <a href="{% url 'all_notes' %}"><h4 style="color:#AFC8AD;">All Notes</h4></a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<br><br><br><br><br><br>
+<footer class="container mt-5 text-center">
+    <p style="font-size : 30pt  ; color:#AFC8AD; ; font-weight : bold"> Copyright&copy;
+        <script> document.write (new Date().getFullYear()); </script>
+        ALL RIGHTS RESERVED <span style="color:#AFC8AD;"> | </span>
+
+</footer>
+{% endblock  %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<style>
+    body {
+        background-color: #282A3A;
+        color: black;
+    }
+        .container {
+        background-color: #282A3A;
+        color: black;
+    }
+</style><br>
+
+
+<div class="container mt-5" style="background-color : AFC8AD"><br>
+    <img src="{% static 'images/aboutus.jpg' %}" style="width: 100%">
+    <br><br>
+
+    <p> Hello Friends...<br>
+        "Welcome to our website , your ultimate destination for sharing and discovering notes on a wide range of topics!
+        Our platform is designed to empower users like you to contribute your knowledge and expertise, making learning
+        accessible to everyone. Whether you're a student looking for study guides, a professional seeking reference
+        materials, or simply curious about new subjects, you'll find a wealth of notes here contributed by our vibrant
+        community. Join us in building a repository of knowledge that enriches lives and fosters continuous learning.
+        Together, let's unlock the power of collective intelligence!"
+        <br>Developed By Raghvendra Sharma  <br>
+        Using Python Django , HTML , CSS , Bootstrap and sqlite .
+
+    </p><br>
+</div>
+<br><br><br>
+{% endblock %}

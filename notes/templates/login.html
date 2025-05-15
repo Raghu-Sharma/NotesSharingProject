@@ -1,0 +1,76 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    body {
+        background-color: #000000;
+        color: black;
+    }
+
+    .container {
+        background-color: #282A3A;
+        color: black;
+    }
+
+    .btn-primary {
+        background-color: #008080;
+        border-color: #008080;
+    }
+
+    .btn-primary:hover {
+        background-color: #006666;
+        border-color: #006666;
+    }
+
+    .btn-link {
+        color: #008080;
+    }
+
+    .btn-link:hover {
+        color: #006666;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+    }
+</style>
+
+<br>
+<div class="container mt-5" style="background-color: #AFC8AD;">
+    <div class="row">
+        <div class="col-sm-6">
+            <img class="img-thumbnail my-5" src="{% static 'images/student.png' %}" style="width: 90%; height: 400px;">
+            <br><br>
+        </div>
+        <div class="col-sm-6"><br><br>
+            <h2>STUDENT LOGIN</h2>
+            <p>If You Are Already A Member, Easily Login</p><br>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input class="form-control" name="emailid" placeholder="Enter Email ID" type="email">
+                    {% if email_error %}
+                    <div class="error-message">{{ email_error }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" name="pwd" placeholder="Enter Password" type="password">
+                    {% if password_error %}
+                    <div class="error-message">{{ password_error }}</div>
+                    {% endif %}
+                </div>
+                <input class="btn btn-primary mt-4" style="width: 100px;" name="LOGIN" type="submit" value="LOGIN">
+                <br><br>
+                <p>If You Don't Have An Account
+                    <a class="btn btn-link text-whiter" href="{% url 'signup' %}">CREATE AN ACCOUNT</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

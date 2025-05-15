@@ -1,0 +1,248 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+{% if error == "no" %}
+<script>
+    alert(' Signup Successfull ');
+    window.location=('{% url 'login' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert(' Something went wrong  , Try Again ');
+</script>
+{% endif %}
+
+<style>
+    body {
+        background-color: #000000;
+        color: black;
+    }
+
+    .container {
+        background-color: #282A3A;
+        color: black;
+    }
+
+    .btn-primary {
+        background-color: #008080;
+        border-color: #008080;
+    }
+
+    .btn-primary:hover {
+        background-color: #006666;
+        border-color: #006666;
+    }
+
+    .btn-link {
+        color: #008080;
+    }
+
+    .btn-link:hover {
+        color: #006666;
+    }
+
+    .eye-icon {
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 40%;
+        z-index: 10;
+    }
+
+    .password-container {
+        position: relative;
+    }
+
+    /* Styling for the password input to give space for the eye icon */
+    #password {
+        padding-right: 40px; /* Space for the eye icon */
+    }
+
+    .submit-btn:disabled {
+        background-color: #D3D3D3;
+        cursor: not-allowed;
+    }
+</style>
+
+<br>
+<div class="container-fluid mt-5" style="background-color: #AFC8AD;">
+    <br>
+    <h2 class="text-center">CREATE AN ACCOUNT</h2>
+    <hr>
+    <br>
+    <form action="{% url 'signup' %}" method="post" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-6">
+                <label>First Name</label>
+                <input class="form-control" name="firstname" id="firstname" placeholder="Enter First Name" type="text" oninput="checkForm()">
+            </div>
+            <div class="col-sm-6">
+                <label>Last Name</label>
+                <input class="form-control" name="lastname" id="lastname" placeholder="Enter Last Name" type="text" oninput="checkForm()">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Contact</label>
+                <input class="form-control" name="contact" id="contact" placeholder="Enter Contact Number" type="text" oninput="checkForm()">
+            </div>
+            <div class="col-sm-6">
+                <label>Email ID</label>
+                <input class="form-control" name="emailid" id="emailid" placeholder="Enter Email ID" type="email" oninput="convertToLowercase(); checkForm()">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Password</label>
+                <div class="password-container">
+                    <input class="form-control" name="password" id="password" placeholder="Enter Password" type="password" oninput="checkForm()">
+                    <i class="fas fa-eye eye-icon" id="toggle-password" onclick="togglePassword()"></i>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label>Semester</label>
+                <select class="form-control" name="semester" id="semester" onchange="checkForm()">
+                    <option value="Select">Select Semester</option>
+                    <option value="First">First</option>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth">Fourth</option>
+                    <option value="Fifth">Fifth</option>
+                    <option value="Sixth">Sixth</option>
+                    <option value="Seventh">Seventh</option>
+                    <option value="Eight">Eight</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Branch</label>
+                <select class="form-control" name="branch" id="branch" onchange="checkForm()">
+                    <option value="Select">Select Branch</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="AIML">AIML</option>
+                    <option value="Business System">Business System</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Electronics">Electronics</option>
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <label>Role</label>
+                <select class="form-control" name="role" id="role" onchange="checkForm()">
+                    <option value="Select">Select</option>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+            </div>
+        </div>
+        <br><br>
+        <input class="btn btn-danger mx-auto d-block submit-btn" style="width: 150px; background-color: #008080; border-color: #008080;" type="submit" value="SUBMIT" disabled><br><br>
+
+        <a class="btn btn-link text-whiter" href="{% url 'login' %}"><h6>ALREADY HAVE AN ACCOUNT !</h6></a>
+    </form>
+    <br>
+</div>
+<br><br><br>
+
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var eyeIcon = document.getElementById("toggle-password");
+
+        // Toggle the password visibility
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+
+            // Hide password after 10 seconds
+            setTimeout(function() {
+                passwordField.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }, 10000);
+        } else {
+            passwordField.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+
+    function validateForm() {
+        // First and Last Name: Capitalize first letter
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+
+        document.getElementById("firstname").value = capitalizeFirstLetter(firstname);
+        document.getElementById("lastname").value = capitalizeFirstLetter(lastname);
+
+        // Email Validation: Must end with @gmail.com and all lowercase
+        var email = document.getElementById("emailid").value;
+        if (!email.match(/^([a-z0-9]+)@gmail\.com$/)) {
+            alert("Please enter a valid Gmail address in @gmail.com format.");
+            return false;
+        }
+
+        // Password Validation: Must be between 6-15 characters with one special character
+        var password = document.getElementById("password").value;
+        var passwordRegex = /^(?=.*[!@#])[A-Za-z0-9!@#]{6,15}$/;
+        if (!password.match(passwordRegex)) {
+            alert("Password must be between 6 to 15 characters and include at least one special character (@, #, _).");
+            return false;
+        }
+
+        // Contact Number Validation: Must be 10 digits
+        var contact = document.getElementById("contact").value;
+        if (!contact.match(/^\d{10}$/)) {
+            alert("Please enter a valid 10-digit mobile number.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+
+    // Automatically convert the email to lowercase
+    function convertToLowercase() {
+        var emailField = document.getElementById("emailid");
+        emailField.value = emailField.value.toLowerCase();
+    }
+
+    // Enable/Disable submit button based on the form fields
+    function checkForm() {
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var contact = document.getElementById("contact").value;
+        var email = document.getElementById("emailid").value;
+        var password = document.getElementById("password").value;
+        var semester = document.getElementById("semester").value;
+        var branch = document.getElementById("branch").value;
+        var role = document.getElementById("role").value;
+
+        var submitBtn = document.querySelector(".submit-btn");
+
+        // Check if all fields are valid
+        if (firstname && lastname && contact && email && password && semester !== "Select" && branch !== "Select" && role !== "Select") {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+</script>
+
+{% endblock %}

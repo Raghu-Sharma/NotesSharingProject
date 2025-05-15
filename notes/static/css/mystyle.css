@@ -1,0 +1,50 @@
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: red;
+    font-weight: bold;
+    background-color: #C7C8CC;
+    border-radius: 10px;
+}
+
+.transparentbox {
+    width: 100%;
+    height: 470px;
+    background-color: lightgrey;
+    border: 1px solid #CD853F;
+    opacity: 0.4;
+}
+
+.transparentbox p {
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: 'Monotype Corsiva';
+    color: #18122B;
+    text-align: center;
+}
+
+.halfcircle {
+    height: 75px;
+    width: 150px;
+    border-radius: 75px 75px 0 0;
+    margin: 0 auto;
+    background-color: #008080;
+}
+
+.halfcircleBottom {
+    height: 75px;
+    width: 150px;
+    border-radius: 0 0 75px 75px;
+    margin: 0 auto;
+    background-color: #006666;
+}
+
+.box1 p {
+    font-weight: bold;
+    color: #18122B;
+    font-family: 'Monotype Corsiva';
+    text-align: center;
+}

@@ -1,0 +1,77 @@
+{% extends 'teacher_nav.html' %}
+{% load static %}
+{% block body %}
+
+
+<link href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" rel="stylesheet">
+
+<style>
+    body {
+        background-color: #white;
+        color: black;
+    }
+    .container {
+        background-color: #282A3A;
+        color: black;
+    }
+
+
+    hr {
+        border-color: black;
+    }
+    .table th,
+    .table td {
+        color: black;
+    }
+</style>
+
+<div class="container-fluid mt-5" style="background-color : AFC8AD ;width: 95%;"><br>
+    <h2 class="text-center">VIEW All USERS</h2>
+    <hr>
+    <br>
+    <table class="table table-bordered" id="example">
+        <thead>
+        <tr>
+            <th>Sr. No.</th>
+            <th>Full Name</th>
+            <th>Email Id</th>
+            <th>Contact</th>
+            <th>Semester</th>
+            <th>Branch</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for i in users%}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td style="text-transform: capitalize">{{ i.user.first_name }} {{ i.user.last_name }}</td>
+            <td>{{ i.user.username }}</td>
+            <td>{{ i.contact }}</td>
+            <td>{{i.semester}}</td>
+            <td>{{ i.branch }}</td>
+            <td>{{ i.role }}</td>
+            <td><a class="btn btn-danger" href="{% url 'delete_users' i.user.id %}"
+                   onclick="return confirm('Are you sure...?')">Delete</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    <br><br>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+<script>
+    new DataTable('#example');
+</script>
+
+<br><br>
+{% endblock %}

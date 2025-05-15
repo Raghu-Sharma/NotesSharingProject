@@ -1,0 +1,72 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+<style>
+    .image{
+    width: 100%;
+    height: 470px;
+    background: url({% static 'images/notes1.jpg' %});
+    background-repeat: no-repeat;
+    background-position: center;
+    }
+    body {
+        background-color: #333;
+        color: black;
+    }
+
+.transparentbox {
+    background-color: #AFC8AD;
+}
+
+
+</style>
+
+<div class="image">
+    <div class="transparentbox"><br><br>
+        <p  style="color: #008080;">Study Kaksh</p>
+    </div>
+</div>
+
+<h4 class="text-center mt-5" style="color: #008080;">JUST 4 STEPS TO FOLLOW</h4>
+
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="box1">
+                <p class="halfcircle"><i class="text-center fas fa-user-circle text-white mt-4"
+                                         style="font-size:40px"></i></p>
+                <a href="{% url 'signup' %}">
+                <p class="halfcircleBottom" style="font-size: 20px; color: #FFFFFF;">Create Account</p></a>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="box1">
+                <p class="halfcircle"><i class="text-center fas fa-sign-in-alt text-white mt-4"
+                                         style="font-size:40px"></i></p>
+                <a href="{% url 'login' %}">
+                    <p class="halfcircleBottom" style="font-size: 20px; color: #FFFFFF;">Login</p></a>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="box1">
+                <p class="halfcircle"><i class="text-center fas fa-upload text-white mt-4" style="font-size:40px"></i>
+                </p>
+                <a href="{% url 'upload_notes' %}">
+                    <p class="halfcircleBottom" style="font-size: 20px; color: #FFFFFF;">Upload Notes</p></a>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="box1">
+                <p class="halfcircle"><i class="text-center fas fa-download text-white mt-4" style="font-size:40px"></i>
+                </p>
+                <a href="{% url 'download_notes' %}">
+                    <p class="halfcircleBottom" style="font-size: 20px; color: #FFFFFF;">Download Notes</p></a>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+
+
+{% if error == "no" %}
+<script>
+    alert(' Logged In Successfully ');
+    window.location=('{% url 'teacher_home' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert(' Invalid Login Credentials , Try Again ');
+</script>
+{% endif %}
+
+
+<style>
+    body {
+         background-color: #000000;
+         color: black;
+     }
+
+     .container {
+         background-color: #282A3A;
+         color: black;
+     }
+
+     .btn-primary {
+         background-color: #008080;
+         border-color: #008080;
+     }
+
+     .btn-primary:hover {
+         background-color: #006666;
+         border-color: #006666;
+     }
+
+     .btn-link {
+         color: #008080;
+     }
+
+     .btn-link:hover {
+         color: #006666;
+     }
+</style><br>
+
+<div class="container mt-5" style="background-color : AFC8AD">
+    <div class="row">
+        <div class="col-sm-6">
+            <img class="img-thumbnail my-5" src=" {% static 'images/teacher.png ' %}"
+                 style="width: 90%; height: 400px;">
+
+
+        </div>
+        <div class="col-sm-6"><br><br>
+            <h2> TEACHER LOGIN </h2>
+
+            <p> Enter Your UserName and Password for access Teacher Panel </p><br>
+
+            <form method="post">
+                {% csrf_token %}
+                <label> UserName</label>
+                <input class="form-control" name="uname" placeholder="Enter username" type="text"><br>
+                <label> Password</label>
+                <input class="form-control" name="pwd" placeholder="Enter Password" type="password">
+                <input class="btn btn-primary mt-5" style="width: 100px;" type=submit value="LOGIN">
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}

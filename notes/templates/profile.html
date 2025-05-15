@@ -1,0 +1,103 @@
+{% extends 'usernavigation.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    body {
+        background-color: #white;
+        color: black;
+    }
+        hr {
+        border-color: white;
+    }
+
+    .btn-primary {
+        background-color: #008080;
+        border-color: #008080;
+    }
+
+
+    .btn-primary:hover {
+        background-color: #006666;
+        border-color: #006666;
+    }
+
+    .btn-link {
+        color: #008080;
+    }
+
+    .btn-link:hover {
+        color: #006666;
+    }
+</style>
+
+<div class="container mt-5" style="background-color:#AFC8AD">
+    <br>
+    <h2 class="text-center"> PROFILE </h2><br>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Full Name :</b>
+        </div>
+
+        <div class="col-md-6">
+            {{data.user.first_name}} {{data.user.last_name}}
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Email ID :</b>
+        </div>
+
+        <div class="col-md-6">
+            {{data.user.username}}
+        </div>
+    </div>
+
+
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Contact :</b>
+        </div>
+
+        <div class="col-md-6">
+            {{data.contact}}
+        </div>
+    </div>
+
+
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Semester :</b>
+        </div>
+
+        <div class="col-md-6">
+            {{data.semester}}
+        </div>
+    </div>
+
+
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Branch :</b>
+        </div>
+
+        <div class="col-md-6">
+            {{data.branch}}
+        </div>
+    </div>
+    <hr>
+    <h2 class="text-center"><a class="  btn btn-primary  mt-4" href="{% url 'edit_profile'%}">Edit Profile</a></h2>
+    <br><br>
+</div>
+
+<br><br><br>
+{% endblock %}
+
+
+

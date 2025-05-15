@@ -1,0 +1,82 @@
+{% extends 'teacher_nav.html' %}
+{% load static %}
+{% block body %}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" rel="stylesheet">
+
+
+<style>
+    body {
+        background-color: white;
+        color: black;
+    }
+    hr {
+        border-color: black;
+    }
+
+    .btn-primary {
+        background-color: #008080;
+        border-color: #008080;
+    }
+
+    .btn-primary:hover {
+        background-color: #006666;
+        border-color: #006666;
+    }
+
+    .btn-link {
+        color: #008080;
+    }
+
+    .btn-link:hover {
+        color: #006666;
+        }
+
+</style>
+
+
+<div class="container mt-5" style="background-color: AFC8AD; max-width: 600px; margin: 440;"><br>
+    <h2 class="text-center mb-4">ASSIGN STATUS
+        <hr style="width: 50%; margin: auto; border-width: 3px;   color: 000000;">
+    </h2>
+    <br>
+
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label class="form-label" for="status" style="font-size: 20px;">Status</label>
+        <select class="form-control" id="status" name="status" style="font-size: 20px;">
+            <option value="Accept">Accept</option>
+            <option value="Reject">Reject</option>
+        </select>
+        <br><br><br>
+        <center><a class="btn btn-primary " href="{% url 'all_notes' %}" style="width: 150px;"> BACK </a>
+            <input class="btn btn-primary " style="width: 150px;" type="submit" value="Submit"></center>
+    </form>
+    <br>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert(' Status Updated Successfully ');
+    window.location=('{% url 'all_notes' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert(' Something went wrong, Try Again ');
+</script>
+{% endif %}
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
+<script>
+    new DataTable('#example');
+</script>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Notes Sharing Site</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" rel="stylesheet">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link href="{% static 'css/mystyle.css'%}" rel="stylesheet">
+<body style="background-color: #F5F5F5; color: #333;">
+
+<h2 style="padding: 2%"><span style="color: #008080; font-family: Playfair Display; font-weight: bold;">Study Kaksh
+    <p style="font-size: 22px; color: #E57373 ;">(Notes Sharing Site)</p>
+
+ </span></h2>
+
+<nav class="navbar navbar-expand-sm justify-content-center" style="background-color: #008080; font-size: 20px;">
+
+    <ul class="navbar-nav">
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'index'%}" style="color: #FFFFFF;">HOME</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'signup'%}" style="color: #FFFFFF;">SIGN UP</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="{%url 'login'%}" style="color: #FFFFFF;">STUDENT</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="{%url 'login_teacher'%}" style="color: #FFFFFF;">TEACHER</a>
+        </li>
+
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'about'%}" style="color: #FFFFFF;">ABOUT</a>
+        </li>
+        <li class="navbar-item">
+            <a class="nav-link" href="{% url 'contact'%}" style="color: #FFFFFF;">CONTACT</a>
+        </li>
+    </ul>
+
+</nav>
+
+<div class="container">
+    {% block body %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

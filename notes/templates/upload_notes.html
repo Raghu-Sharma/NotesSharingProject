@@ -1,0 +1,130 @@
+{% extends 'usernavigation.html' %}
+{% load static %}
+{% block body %}
+
+
+<style>
+    body {
+        background-color: #white;
+        color: black;
+    }
+        hr {
+        border-color: white;
+    }
+
+    .btn-primary {
+        background-color: #008080;
+        border-color: #008080;
+    }
+
+    .btn-primary:hover {
+        background-color: #006666;
+        border-color: #006666;
+    }
+
+    .btn-link {
+        color: #008080;
+    }
+
+    .btn-link:hover {
+        color: #006666;
+    }
+</style>
+
+
+<div class="container mt-5" style="background-color : AFC8AD"><br>
+    <h2 class="text-center"> UPLOAD NOTES </h2>
+    <hr>
+    <div class="row">
+
+        <div class="col-sm-6">
+
+
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+
+
+                <label> Branch</label>
+                <select class="form-control" name="branch">
+                    <option value="">---Select Branch---</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="AIML">AIML</option>
+                    <option value="Business System">Business System</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Electronics">Electronics</option>
+
+                </select>
+
+                <label> Subject</label>
+                <input class="form-control" name="subject" placeholder="Enter Subject" type="text">
+
+                <label> Semester</label>
+                <select class="form-control" name="semester">
+                    <option value="Select" disabled>Select Semester</option>
+                    <option value="First">First</option>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth">Fourth</option>
+                    <option value="Fifth">Fifth</option>
+                    <option value="Sixth">Sixth</option>
+                    <option value="Seventh">Seventh</option>
+                    <option value="Eight">Eight</option>
+                    <option value="Nine">Nine</option>
+                </select>
+
+                <label> Notes File</label>
+                <input class="form-control" name="notesfile" type="file">
+
+                <label> File Type</label>
+                <select class="form-control" name="filetype">
+                    <option value="">---Select File Type---</option>
+                    <option value="PDF">PDF</option>
+                    <option value="PPT">PPT</option>
+                    <option value="DOC/DOCX">DOC/DOCX</option>
+                    <option value="TXT">TXT</option>
+                    <option value="Image">Image</option>
+                    <option value="ZIP/RAR">ZIP/RAR</option>
+                </select>
+
+
+                <label> Description</label>
+                <textarea class="form-control" name="description" placeholder="Enter URL & Text"></textarea>
+
+
+                <br>
+                <div class="text-center"><input class="btn btn-info  mt-4"
+                                                style="background-color: #008080; width: 100px;" type=submit
+                                                value="SUBMIT"></div>
+            </form>
+            <br>
+        </div>
+
+        <div class="col-sm-6 ">
+
+            <img class="mt-4" src="{% static 'images/notes2.jpg' %}" style="width:95%;height:450px ">
+        </div>
+
+    </div>
+</div>
+<br><br><br>
+
+
+{% if error == "no" %}
+<script>
+    alert(' Notes Uploaded Successfully ');
+    window.location=('{% url 'view_mynotes' %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert(' Something went wrong  , Try Again ');
+</script>
+{% endif %}
+
+
+{% endblock %}
